@@ -608,14 +608,15 @@
 					</item>
 					<item id="10">
 						<label>20342</label>
-						<onclick>ActivateWindow(Videos,MovieTitles,return)</onclick>
+						<onclick>Control.SetFocus(90162)</onclick>
 						<icon>special://skin/backgrounds/videos.jpg</icon>
 						<thumb>$INFO[Skin.String(Home_Custom_Back_Movies_Folder)]</thumb>
 						<visible>Skin.HasSetting(HomeMenuNoMoviesButton) + Library.HasContent(Movies)</visible>
 					</item>
 					<item id="11">
 						<label>20343</label>
-						<onclick>ActivateWindow(Videos,TVShowTitles,return)</onclick>
+						<onclick>Control.SetFocus(90173)</onclick>
+						<!-- onclick>ActivateWindow(Videos,TVShowTitles,return)</onclick -->
 						<icon>special://skin/backgrounds/videos.jpg</icon>
 						<thumb>$INFO[Skin.String(Home_Custom_Back_TVShow_Folder)]</thumb>
 						<visible>Skin.HasSetting(HomeMenuNoTVShowsButton) + Library.HasContent(TVShows)</visible>
@@ -1020,7 +1021,7 @@
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<shadowcolor>black</shadowcolor>
-				<label>[B]$INFO[Weather.Temperature][/B]</label>
+				<label>[B]$INFO[Window(Weather).Property(Current.FeelsLike)]$INFO[System.TemperatureUnits][/B]</label>
 			</control>
 		</control>
 		<control type="group">

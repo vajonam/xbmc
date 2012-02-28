@@ -56,25 +56,25 @@
 			<label>31328</label>
 			<onclick>ActivateWindow(Videos,RecentlyAddedMovies,return)</onclick>
 		</control>
-		<control type="button" id="90163">
-			<include>ButtonHomeSubCommonValues</include>
-			<label>369</label>
-			<onclick>ActivateWindow(Videos,MovieTitles,return)</onclick>
-		</control>
 		<control type="button" id="90164">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>135</label>
-			<onclick>ActivateWindow(Videos,MovieGenres,return)</onclick>
+			<label>English</label>
+			<onclick>ActivateWindow(VideoLibrary,special://videoplaylists/English Movies.xsp,return)</onclick>
 		</control>
 		<control type="button" id="90165">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>652</label>
-			<onclick>ActivateWindow(Videos,MovieYears,return)</onclick>
+			<label>Tamil</label>
+			<onclick>ActivateWindow(VideoLibrary,special://videoplaylists/Tamil Movies.xsp,return)</onclick>
 		</control>
 		<control type="button" id="90166">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>344</label>
-			<onclick>ActivateWindow(Videos,MovieActors,return)</onclick>
+			<label>Hindi</label>
+			<onclick>ActivateWindow(VideoLibrary,special://videoplaylists/Hindi Movies.xsp,return)</onclick>
+		</control>
+		<control type="button" id="90168">
+			<include>ButtonHomeSubCommonValues</include>
+			<label>Animated</label>
+			<onclick>ActivateWindow(VideoLibrary,special://videoplaylists/Animated Movies.xsp,return)</onclick>
 		</control>
 		<control type="image" id="90167">
 			<width>35</width>
@@ -213,7 +213,6 @@
 		<control type="button" id="90132">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>13391</label>
-			<onclick>SetFocus(9000)</onclick>
 			<onclick>EjectTray()</onclick>
 		</control>
 		<control type="image" id="90126">
