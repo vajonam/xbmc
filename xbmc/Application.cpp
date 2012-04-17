@@ -758,8 +758,23 @@ bool CApplication::Create()
     // update the window resolution
     g_Windowing.SetWindowResolution(g_guiSettings.GetInt("window.width"), g_guiSettings.GetInt("window.height"));
 
-    if (g_advancedSettings.m_startFullScreen && g_guiSettings.m_LookAndFeelResolution == RES_WINDOW)
-      g_guiSettings.m_LookAndFeelResolution = RES_DESKTOP;
+#ifdef TARGET_DARWIN_OSX
+  // force initial window creation to be windowed, if fullscreen, it will switch to it below
+  // fixes the white screen of death if starting fullscreen and switching to windowed.
+  bool bFullScreen = false;
+  if (!g_Windowing.CreateNewWindow("XBMC", bFullScreen, g_settings.m_ResInfo[RES_WINDOW], OnEvent))
+  {
+    CLog::Log(LOGFATAL, "CApplication::Create: Unable to create window");
+    return false;
+  }
+#else
+  bool bFullScreen = g_guiSettings.m_LookAndFeelResolution != RES_WINDOW;
+  if (!g_Windowing.CreateNewWindow("XBMC", bFullScreen, g_settings.m_ResInfo[g_guiSettings.m_LookAndFeelResolution], OnEvent))
+  {
+    CLog::Log(LOGFATAL, "CApplication::Create: Unable to create window");
+    return false;
+  }
+#endif
 
     if (!g_graphicsContext.IsValidResolution(g_guiSettings.m_LookAndFeelResolution))
     {
@@ -3857,7 +3872,7 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
 
   // Workaround for bug/quirk in SDL_Mixer on OSX.
   // TODO: Remove after GUI Sounds redux
-#if defined(__APPLE__)
+#if defined(__APPLE__) || defined(_LINUX)
   g_audioManager.Enable(false);
 #endif
 
@@ -3921,7 +3936,7 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     }
 #endif
 
-#if !defined(__APPLE__)
+#if !defined(__APPLE__) && !defined(_LINUX)
     g_audioManager.Enable(false);
 #endif
   }
