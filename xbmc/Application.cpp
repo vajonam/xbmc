@@ -4835,7 +4835,7 @@ void CApplication::Process()
   MEASURE_FUNCTION;
   if (g_application.IsServerMode())
   {
-    sleep(1);
+    Sleep(1);
   }
   else
   {
